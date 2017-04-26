@@ -50,16 +50,17 @@ Install
 --------------------------------------------------------------------------------
 
 ORK can be installed in several different ways: from source or from ``apt``
-packages, using ROS or without ROS, etc. The :ref:`Installation <install>`
+packages, using ROS or without ROS, etc. The :ref:`Installation <installation>`
 page provides detailed instructions (beyond those in the Getting Started Guide)
 on the different ways to install ORK.
 
+
 --------------------------------------------------------------------------------
-Quickguide (outdated)
+Outdated guides (will be removed in the near future)
 --------------------------------------------------------------------------------
 
-We know you can't wait; if you don't care about the intricacies and want to have
-a quick overview, follow the :ref:`Quick Guide <quickguide>`
+:ref:`Quick Guide (outdated) <quickguide>`
+:ref:`Install (outdated) <install>`
 
 --------------------------------------------------------------------------------
 Tutorials

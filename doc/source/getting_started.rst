@@ -10,9 +10,9 @@ Getting Started with ORK
 Introduction
 --------------------------------------------------------------------------------
 
-Welcome! This guide will help you get started with the Object Recognition Kitchen.
-In this guide, you'll learn how to install and ORK packages to do a very simple
-detection task: finding the pose of a can of soda on a flat surface.
+Welcome! This guide will help you get started with the Object Recognition
+Kitchen. In this guide, you'll learn how to install and ORK packages to do a
+very simple detection task: finding the pose of a can of soda on a flat surface.
 
 ORK has several different detectors available. One of the simplest is called
 ``tabletop``, and it can be used to detect objects regardless of textures, as
@@ -29,7 +29,6 @@ Before starting, you should make sure that you have the following items:
 - A computer with Ubuntu 16.04 and ROS Kinetic installed (``ros-kinetic-desktop-full``)
 - A depth camera. This tutorial includes guides for two types of cameras:
   the Asus Xtion Pro/Pro Live and the Orbbec Astra.
-  TODO insert pictures
 - A can of soda (12 fl. oz./355 mL)--the object you'll be detecting.
   The color (brand) is not important, as long as the can is not mostly black
   (some depth cameras have a hard time detecting black objects).
@@ -45,15 +44,15 @@ to do it again.
 
 .. code-block:: sh
 
-   source /opt/ros/kinetic/setup.sh # source your ros distribution
+    source /opt/ros/kinetic/setup.sh # source your ros distribution
 
 .. code-block:: sh
 
-   cd ~                             # go to your home directory
+    cd ~                             # go to your home directory
 
-   mkdir -p ork_ws/src              # create a new workspace folder
-   cd ork_ws/src                    # enter the workspace folder
-   catkin_init_workspace            # initialize the workspace
+    mkdir -p ork_ws/src              # create a new workspace folder
+    cd ork_ws/src                    # enter the workspace folder
+    catkin_init_workspace            # initialize the workspace
 
 --------------------------------------------------------------------------------
 Step 2: Install ORK
@@ -64,9 +63,9 @@ these packages on your system.
 
 .. code-block:: sh
 
-   sudo apt install git libopenni-dev ros-kinetic-catkin ros-kinetic-ecto* \
-   ros-kinetic-opencv-candidate ros-kinetic-moveit-core ros-kinetic-rviz  \
-   ros-kinetic-rqt-reconfigure
+    sudo apt install git libopenni-dev ros-kinetic-ecto* \
+    ros-kinetic-opencv-candidate ros-kinetic-moveit-core ros-kinetic-rviz  \
+    ros-kinetic-rqt-reconfigure
 
 The easiest way to install ORK is via the ``apt`` packages, such as
 ``ros-kinetic-object-recognition-core``. Unfortunately, not all of the packages
@@ -78,16 +77,16 @@ already there):
 
 .. code-block:: sh
 
-   git clone http://github.com/wg-perception/object_recognition_core
-   git clone http://github.com/wg-perception/tabletop
-   git clone http://github.com/wg-perception/object_recognition_msgs
-   git clone http://github.com/wg-perception/object_recognition_ros
-   git clone http://github.com/wg-perception/object_recognition_ros_visualization
-   git clone http://github.com/wg-perception/ork_tutorials
+    git clone http://github.com/wg-perception/object_recognition_core
+    git clone http://github.com/wg-perception/tabletop
+    git clone http://github.com/wg-perception/object_recognition_msgs
+    git clone http://github.com/wg-perception/object_recognition_ros
+    git clone http://github.com/wg-perception/object_recognition_ros_visualization
+    git clone http://github.com/wg-perception/ork_tutorials
 
-   cd ..                     # go to workspace root
-   catkin_make               # build everything (this will take a few minutes)
-   source devel/setup.bash   # add the new packages to your ROS package path
+    cd ..                     # go to workspace root
+    catkin_make               # build everything (this will take a few minutes)
+    source devel/setup.bash   # add the new packages to your ROS package path
 
 During this tutorial, you will be launching a lot of different terminals, and
 many of them need to have ROS and/or ``ork_ws/devel/setup.bash`` sourced.
@@ -101,24 +100,23 @@ Step 3: Install your camera
 Click the button below that corresponds to your camera type.
 
 .. toggle_table::
-   :arg1: Orbbec Astra
-   :arg2: Asus Xtion
-
-.. toggle:: Orbbec Astra
-
-   .. code-block:: sh
-
-      sudo apt install ros-kinetic-astra-camera ros-kinetic-astra-launch
-
-   You also have to update your udev rules to allow access to the USB camera.
-   Follow the guide at http://wiki.ros.org/astra_camera.
-
+    :arg1: Asus Xtion
+    :arg2: Orbbec Astra
 
 .. toggle:: Asus Xtion
 
-   .. code-block:: sh
+    .. code-block:: sh
 
-      sudo apt install ros-kinetic-openni2-camera ros-kinetic-openni2-launch
+        sudo apt install ros-kinetic-openni2-camera ros-kinetic-openni2-launch
+
+.. toggle:: Orbbec Astra
+
+    .. code-block:: sh
+
+        sudo apt install ros-kinetic-astra-camera ros-kinetic-astra-launch
+
+    You also have to update your udev rules to allow access to the USB camera.
+    Follow the guide at http://wiki.ros.org/astra_camera.
 
 --------------------------------------------------------------------------------
 Step 4: Install the CouchDB Backend
@@ -132,15 +130,15 @@ run:
 
 .. code-block:: sh
 
-   sudo apt install couchdb
+    sudo apt install couchdb
 
 You can check that the database is running as expected by running this command:
 
 .. code-block:: sh
 
-   curl -X GET http://localhost:5984
-   # If CouchDB is working, you should get terminal output similar to the following:
-   # {"couchdb":"Welcome","version":"1.0.1"}
+    curl -X GET http://localhost:5984
+    # If CouchDB is working, you should get terminal output similar to the following:
+    # {"couchdb":"Welcome","version":"1.0.1"}
 
 
 --------------------------------------------------------------------------------
@@ -155,15 +153,15 @@ First, download the soda can model:
 
 .. code-block:: sh
 
-   wget https://github.com/wg-perception/ork_tutorials/raw/master/data/coke.stl
+    wget https://github.com/wg-perception/ork_tutorials/raw/master/data/coke.stl
 
 Then, add the model to the database (your terminal needs to have ROS and
 your new ``ork_ws/devel/setup.bash`` sourced):
 
 .. code-block:: sh
 
-   rosrun object_recognition_core object_add.py -n "soda_can" -d "A can of soda"
-   rosrun object_recognition_core mesh_add.py <the object id that previous command returned> coke.stl
+    rosrun object_recognition_core object_add.py -n "soda_can" -d "A can of soda"
+    rosrun object_recognition_core mesh_add.py <the object id that previous command returned> coke.stl
 
 --------------------------------------------------------------------------------
 Step 6: Set up your ORK configuration file
@@ -171,11 +169,12 @@ Step 6: Set up your ORK configuration file
 
 ORK uses configuration files, which usually have the extension ``.ork``, to
 create *sources*, *sinks*, and *pipelines*. Roughly speaking, sources create
-data, sinks accept data, and pipelines define how data flows from sources to sinks.
+data, sinks accept data, and pipelines define how data flows from sources to
+sinks.
 
-For this tutorial, you don't have to concern yourself with the details of ``.ork``
-files. Instead, you can download pre-written ones that are already set up for your
-camera.
+For this tutorial, you don't have to concern yourself with the details of
+``.ork`` files. Instead, you can download pre-written ones that are already set
+up for your camera.
 
 The configuration file we'll use is located at
 ``ork_ws/src/ork_tutorials/conf/gettingstarted.ork``.
@@ -187,51 +186,51 @@ Step 7: Run detection
 Click the button below that corresponds to your camera type.
 
 .. toggle_table::
-   :arg1: Orbbec Astra
-   :arg2: Asus Xtion
+    :arg1: Asus Xtion
+    :arg2: Orbbec Astra
 
 First, launch the camera driver to generate depth clouds and publish them to
-ROS topics. First, make sure your camera is plugged in. Then, from a terminal,
+ROS topics. Make sure your camera is plugged in. Then, from a terminal,
 with ROS sourced, run
-
-.. toggle:: Orbbec Astra
-
-   .. code-block:: sh
-
-      roslaunch astra_launch astra.launch
-
 
 .. toggle:: Asus Xtion
 
-   .. code-block:: sh
+    .. code-block:: sh
 
-      roslaunch openni2_launch openni2.launch
+        roslaunch openni2_launch openni2.launch
 
-Next, you need to enable *registration*. This will align the color and depth images
-coming from the camera, which greatly increases recognition accuracy. To enable
-registration, use the ``rqt_reconfigure`` program by running the following command
-**in a new terminal** (do not close the terminal running the camera driver from above):
+.. toggle:: Orbbec Astra
+
+    .. code-block:: sh
+
+        roslaunch astra_launch astra.launch
+
+Next, you need to enable *registration*. This will align the color and depth
+images coming from the camera, which greatly increases recognition accuracy. To
+enable registration, use the ``rqt_reconfigure`` program by running the
+following command **in a new terminal** (do not close the terminal running the
+camera driver from above):
 
 .. code-block:: sh
 
-   rosrun rqt_reconfigure rqt_reconfigure
+    rosrun rqt_reconfigure rqt_reconfigure
 
 The ``rqt_reconfigure`` window should pop up. Using the panel on the left,
 drill down to ``camera/driver``. In the right panel, check the box for
-``depth_registration``. Once the box is checked, you can safely close rqt_reconfigure
-(and the terminal you used to launch it).
+``depth_registration``. Once the box is checked, you can safely close
+rqt_reconfigure (and the terminal you used to launch it).
 
 .. image:: img/getting_started/depth_registration_box.png
-   :alt: Screenshot of the rqt_reconfigure interface, showing the
-         depth_registration checkbox
-   :align: center
+    :alt: Screenshot of the rqt_reconfigure interface, showing the
+            depth_registration checkbox
+    :align: center
 
-Now you can run the actual detector. In a terminal, with ROS and ``ork_ws`` sourced,
-run
+Now you can run the actual detector. In a terminal, with ROS and ``ork_ws``
+sourced, run
 
 .. code-block:: sh
 
-   rosrun object_recognition_core detection -c `rospack find object_recognition_tutorials`/conf/gettingstarted.ork
+    rosrun object_recognition_core detection -c `rospack find object_recognition_tutorials`/conf/gettingstarted.ork
 
 --------------------------------------------------------------------------------
 Step 8: View detection results
@@ -245,34 +244,34 @@ on the terminal (ROS and ``ork_ws`` must be sourced) by running
 
 You can also use RViz to visualize what's happening.
 
- - Set your RViz Fixed Frame to ``camera_link``.
- - Use the Add button to add three Displays: a DepthCloud, an ORKTable, and an
-   ORKObject
+- Set your RViz Fixed Frame to ``camera_link``.
+- Use the Add button to add three Displays: a DepthCloud, an ORKTable, and an
+    ORKObject
 
-   .. image:: img/getting_started/ros_views.png
-      :alt: Screenshot of the Add Display panel in RViz, showing the ORK
-            Displays.
-      :align: center
+    .. image:: img/getting_started/ros_views.png
+        :alt: Screenshot of the Add Display panel in RViz, showing the ORK
+                Displays.
+        :align: center
 
- - On the DepthCloud, set the Depth Map Topic to ``/camera/depth/image_rect``,
-   and set the Color Image Topic to ``/camera/rgb/image_rect_color``. You should
-   see the depth camera's colored points in the RViz window.
+- On the DepthCloud, set the Depth Map Topic to ``/camera/depth/image_rect``,
+    and set the Color Image Topic to ``/camera/rgb/image_rect_color``. You
+    should see the depth camera's colored points in the RViz window.
 
-   .. image:: img/getting_started/depth_camera_topics.png
-      :alt: Screenshot of the DepthCloud Display in RViz, with the correct
-            topic names highlighted.
-      :align: center
+    .. image:: img/getting_started/depth_camera_topics.png
+        :alt: Screenshot of the DepthCloud Display in RViz, with the correct
+                topic names highlighted.
+        :align: center
 
-   .. image:: img/getting_started/point_cloud.png
-      :alt: Screenshot of the RViz, showing a point cloud of the soda can.
-      :align: center
- - On the ORKObject, set the topic to ``/recognized_object_array``.
- - On the ORKTable, set the topic to ``/table_array``.
+    .. image:: img/getting_started/point_cloud.png
+        :alt: Screenshot of the RViz, showing a point cloud of the soda can.
+        :align: center
+- On the ORKObject, set the topic to ``/recognized_object_array``.
+- On the ORKTable, set the topic to ``/table_array``.
 
-   .. image:: img/getting_started/ork_topics.png
-      :alt: Screenshot of the ORK Displays in RViz, with the correct
-            topic names highlighted.
-      :align: center
+    .. image:: img/getting_started/ork_topics.png
+        :alt: Screenshot of the ORK Displays in RViz, with the correct
+                topic names highlighted.
+        :align: center
 
 You should now be able to view the detected soda can! Try moving it around the
 flat area. The detected planar surfaces are also shown, outlined in cyan. The
@@ -280,8 +279,8 @@ cyan arrows point in the direction of the estimated surface normal of the flat
 plane (or "table").
 
 .. image:: img/getting_started/detection.png
-   :alt: Successful detection of a soda can, as seen in RViz.
-   :align: center
+    :alt: Successful detection of a soda can, as seen in RViz.
+    :align: center
 
 ================================================================================
 Where to go Next
