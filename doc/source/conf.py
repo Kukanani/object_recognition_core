@@ -34,7 +34,7 @@ extensions = ['sphinx.ext.autodoc',
               'sphinx.ext.doctest',
               'sphinx.ext.graphviz',
               'sphinx.ext.intersphinx',
-              'sphinx.ext.pngmath',
+              'sphinx.ext.imgmath',
               'sphinx.ext.todo',
               'sphinx.ext.viewcode',
               'breathe']
