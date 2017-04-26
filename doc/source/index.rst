@@ -11,7 +11,7 @@ Notice: Documentation Update in Progress
 
 Hello ORK Users! The documentation is in the process of being updated and
 upgraded! Information may have moved since the last time you visited. If you
-can't find anything, please raise an issue on
+can't find something, please raise an issue on
 `GitHub <https://github.com/wg-perception/object_recognition_core>`_. Thanks!
 
 --------------------------------------------------------------------------------
@@ -29,98 +29,57 @@ transparent, articulated, etc., and different approaches work best for each type
 of object. For this reason, ORK was designed to run several object recognition
 techniques simultaneously, each designed to detect a different type of object.
 
-ORK attempts to take care of all the non-vision aspects of the
-problem for you (database management, inputs/outputs handling,
-robot/ROS integration ...), so that you can focus on writing a recognition
-algorithm and detector that fits your needs.
+When using/developing a new method you created or found, you usually have
+to recreate the following functionality:
+
+- A way to store/query/use your training data
+- A way to store/query/use your models
+- An easy to train your objects
+- Where your data is coming from (cameras, ROS rosbag, ROS topics)
+- Where your data is going to
+- ROS integration, by listening and publishing to the right topics
+- The ability to compare detectors, by having several running at once
+
+``ORK`` takes care of this "plumbing" by providing base classes and a flexible
+infrastructure, so you can work on the fun part: the detection algorithms.
 
 ``ORK`` is built on top of `ecto <http://plasmodic.github.com/ecto>`_,
 which is a lightweight hybrid C++/Python framework for organizing computations
-as directed acyclic graphs.
+as directed acyclic graphs. It can be installed in several different ways: from
+source or from ``apt`` packages, and either with ROS support or without.
 
 --------------------------------------------------------------------------------
 Getting Started
 --------------------------------------------------------------------------------
 
-To learn the basics of ORK, please read the
-:ref:`Getting Started Guide <getting_started>`.
+- :ref:`Getting Started Guide <getting_started>` -- This tutorial will guide you
+  through basic installation, training, and detection.
 
 --------------------------------------------------------------------------------
-Install
+Reference Documentation
 --------------------------------------------------------------------------------
-
-ORK can be installed in several different ways: from source or from ``apt``
-packages, using ROS or without ROS, etc. The :ref:`Installation <installation>`
-page provides detailed instructions (beyond those in the Getting Started Guide)
-on the different ways to install ORK.
-
-
---------------------------------------------------------------------------------
-Outdated guides (will be removed in the near future)
---------------------------------------------------------------------------------
-
-:ref:`Quick Guide (outdated) <quickguide>`
-:ref:`Install (outdated) <install>`
-
---------------------------------------------------------------------------------
-Tutorials
---------------------------------------------------------------------------------
-
-Ok, now that you know a little, you can follow the
-:ref:`Tutorials <orktutorials:object_recognition_tutorials>`.
-
---------------------------------------------------------------------------------
-General Usage
---------------------------------------------------------------------------------
-
-Now that you have a bit more time, we suggest you read about the
-:ref:`Infrastructure <infrastructure>` to understand how to interact with
-``ORK``. You can then go through the different steps of object recognition:
-
-* :ref:`Data Capture <orkcapture:ork_capture>` ...
-* ... from which you can perform :ref:`Training <training>` of object models ...
-* ... that you can then use for :ref:`Detection <detection>`
-
---------------------------------------------------------------------------------
-ROS integration
---------------------------------------------------------------------------------
-
-The recognition kitchen was built in a ROS agnostic way, but ROS components
-were also developed for integration with the ROS ecosystem (e.g. publishers,
-subscribers, actionlib server, RViz plugin ...). For more info, check out the
-:ref:`ROS Integration <orkros:ros>`.
-
---------------------------------------------------------------------------------
-Recognition Pipelines
---------------------------------------------------------------------------------
-
-Several object recognition pipelines have been implemented for this framework.
-Their documentation is work in progress:
-
-+----------------------------------------------+--------------+------------------------------+--------------------------------------------------------------+
-| Techniques                                   | 2D/3D        | Types of object              | Limitations                                                  |
-+==============================================+==============+==============================+==============================================================+
-| :ref:`LINE-MOD <orklinemod:line_mod>`        | 2D and/or 3D | * rigid, Lambertian          | * does not work with partial occlusions                      |
-+----------------------------------------------+--------------+------------------------------+--------------------------------------------------------------+
-| :ref:`tabletop <orktabletop:tabletop>`       | 3D           | * rigid, Lambertian          | * scales linearly with the number of objects                 |
-|                                              |              | * rotationally symmetric     | * the object is assumed to be on a table with no 3d rotation |
-|                                              |              | * also finds planar surfaces |                                                              |
-+----------------------------------------------+--------------+------------------------------+--------------------------------------------------------------+
-| :ref:`TOD <orktod:tod>`                      | 2D and 3D    | * rigid, Lambertian          |                                                              |
-|                                              |              | * textured                   |                                                              |
-+----------------------------------------------+--------------+------------------------------+--------------------------------------------------------------+
-| :ref:`transparent objects                    | 2D and 3D    | * rigid and transparent      | * Training has to be done on a painted version of the object |
-| <orktransparentobjects:transparent_objects>` |              |                              |                                                              |
-+----------------------------------------------+--------------+------------------------------+--------------------------------------------------------------+
-
---------------------------------------------------------------------------------
-Tools
---------------------------------------------------------------------------------
-
-There are several tools that are used by some of the pipeline, and you might
-need them for your own work or pipelines:
-
-  * :ref:`Reconstruction <orkreconstruction:reconstruction>`
+- :ref:`Installation <installation>`
+  -- detailed instructions (beyond those in the Getting Started Guide)
+  on the different ways to install ORK.
+- :ref:`Configuration Files <configuration>`
+  -- How to use ``ORK`` configuration files
+- :ref:`Data Capture <orkcapture:ork_capture>`
+  -- How to capture training data from real-world objects
+- :ref:`Training <training>`
+  -- Building recognition models from captured data
+- :ref:`Detection <detection>`
+  -- Detecting objects using recognition models
+- :ref:`Pipelines <pipelines>`
+  -- Different types of detectors in ORK
+- :ref:`Pipeline tutorials <orktutorials:object_recognition_tutorials>`
+  -- Tutorials on using different detectors
+- :ref:`Databases <databases>`
+  -- Information on database backends, for storing recognition models
+- :ref:`ROS Integration <orkros:ros>`
+  -- Details on ``ORK``'s integration with ROS
+- :ref:`Reconstruction Tool <orkreconstruction:reconstruction>`
+  -- An ``ORK`` tool for reconstructing 3D models from several images
+- :ref:`Quick Guide <quickguide>`--An outdated tutorial for ORK
 
 --------------------------------------------------------------------------------
 Developers' Guide
@@ -130,14 +89,15 @@ ORK is designed to be modular, to allow developers to extend it and replace
 components. For example, you can use a different database backend to store
 a list of recognition objects, or write your own detector.
 
-For more details, please read the :ref:`Developer Guide <ork_developer>`
+For more details, please read the :ref:`Developer Guide <ork_developer>`.
 
 ################################################################################
 Contact
 ################################################################################
 
-For bug reports and comments, please use the
-`GitHub infrastructure <https://github.com/wg-perception/>`_ or join us on the
+For bug reports, issues, and to contribute, please use the appropriate
+repository page on `GitHub <https://github.com/wg-perception/>`. For discussion
+and troubleshooting, please visit the
 `Google Group <https://groups.google.com/forum/#!forum/object-recognition-kitchen>`_.
 
 --------------------------------------------------------------------------------

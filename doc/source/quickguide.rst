@@ -1,9 +1,9 @@
-:orphan:
-
 .. _quickguide:
 
 Quick Guide
 ###########
+
+**This document is outdated; please read the :ref:`Getting Started Guide <getting_started>`_ instead.
 
 Instructions are slightly different on whether you use ROS or not. For ROS, instructions will work whether you build ``ROS`` from source or not.
 

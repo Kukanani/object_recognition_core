@@ -1,5 +1,3 @@
-:orphan:
-
 .. _installation:
 
 ################################################################################
@@ -250,7 +248,10 @@ Now that you've collected all the source code, you can build:
 --------------------------------------------------------------------------------
 
 Several database backends are possible, as described on the
-:ref:`DB Page <object_recognition_core_db>` page.
+:ref:`Database reference<databases>`.
+
+More backend tutorials may be added here in the future, but for now, please
+use CouchDB (the "default" choice).
 
 **CouchDB**
 

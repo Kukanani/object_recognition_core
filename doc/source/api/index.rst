@@ -26,9 +26,10 @@ by getting automatic docs from it ...).
 
 .. toctree::
    :maxdepth: 2
-   
+
    generic.rst
    training.rst
    detection.rst
    source_sink.rst
    cells.rst
+   db.rst
