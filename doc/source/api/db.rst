@@ -21,5 +21,5 @@ Core Types
 Implementing your own DB type
 -----------------------------
 
-If you want to create your own DB type, look at the examples from the core like CouchDb or filesystem.
-You just have to inherit from ``ObjectDb``.
+If you want to create your own DB type, look at the examples from the core, like
+CouchDb or filesystem. Your new database must inherit from ``ObjectDb``.
