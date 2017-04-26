@@ -2,7 +2,6 @@
 apps/data/
 *.obj
 *.3ds
-*.png
 *.ply
 *.mtl
 *.bag
