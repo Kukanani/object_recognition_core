@@ -22,16 +22,16 @@ complete ORK installation consists of several parts:
 - (optional) compiled documentation (i.e., this web page)
 
 This guide goes step by step through the installation of each of these
-components.
+components. Note that this guide assumes ros kinetic is being used.
 
 
 --------------------------------------------------------------------------------
 0. Choose Installation Type
 --------------------------------------------------------------------------------
 
-Installing without ROS is harder, since more dependencies must be built from
-source. The ROS version is more heavily used, and has much better supported
-packages.
+The ROS version of ORK is more heavily used, and has much better supported
+packages. Not using ROS will require you to install less packages, but it all
+must be built from source.
 
 .. toggle_table::
     :arg1: ROS
@@ -132,8 +132,15 @@ The first step is to create a catkin workspace:
     packages is from source. Some ``apt`` packages exist linked to ros, including
     ``ros-kinetic-object-recognition-core``, for example, but not all ORK
     packages are up to date in this manner, and it's best to just use source for
-    everything.
+    everything. Instead of cloning individual repositories from github, you can
+    use the provided ``rosinstall`` file by running the following commands:
 
+    .. code-block:: sh
+
+        cd ..
+        wstool init src https://raw.github.com/wg-perception/object_recognition_core/master/doc/source/ork.rosinstall.kinetic.plus
+        cd src && wstool update -j8
+        rosdep install --from-paths . -i -y
 
 .. toggle:: Without ROS
 
