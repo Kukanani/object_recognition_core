@@ -12,6 +12,11 @@ Welcome! This guide will help you get started with the Object Recognition
 Kitchen. In this guide, you'll learn how to install and ORK packages to do a
 very simple detection task: finding the pose of a can of soda on a flat surface.
 
+.. contents::
+
+--------------------------------------------------------------------------------
+Overview
+--------------------------------------------------------------------------------
 ORK has several different detectors available. One of the simplest is called
 ``tabletop``, and it can be used to detect objects regardless of textures, as
 long as you have a mesh of the object. This is the best detector for our
@@ -281,7 +286,7 @@ plane (or "table").
     :align: center
 
 ================================================================================
-Where to go Next
+Where to Go Next
 ================================================================================
 
 Congratulations, you've learned the basics of ORK! Here are some suggestions for

@@ -20,8 +20,11 @@ complete ORK installation consists of several parts:
 - (optional) compiled documentation (i.e., this web page)
 
 This guide goes step by step through the installation of each of these
-components. Note that this guide assumes ros kinetic is being used.
+components. Note that this guide assumes that if you are using ROS, it is
+ROS Kinetic. Other versions of ROS should have a similar installation procedure,
+but success is not guaranteed.
 
+.. contents::
 
 --------------------------------------------------------------------------------
 0. Choose Installation Type

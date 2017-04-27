@@ -10,8 +10,9 @@ Notice: Documentation Update in Progress
 --------------------------------------------------------------------------------
 
 Hello ORK Users! The documentation is in the process of being updated and
-upgraded! Information may have moved since the last time you visited. If you
-can't find something, please raise an issue on
+upgraded. Information may have moved since the last time you visited.
+
+If you can't find something, please raise an issue on
 `GitHub <https://github.com/wg-perception/object_recognition_core>`_. Thanks!
 
 --------------------------------------------------------------------------------
