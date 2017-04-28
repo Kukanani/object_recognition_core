@@ -1,5 +1,7 @@
 .. _databases:
 
+:orphan:
+
 Database
 ########
 .. _couchdb: http://couchdb.apache.org

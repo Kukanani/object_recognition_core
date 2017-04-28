@@ -1,5 +1,7 @@
 .. _detection:
 
+:orphan:
+
 Detection
 #########
 .. highlight:: ectosh

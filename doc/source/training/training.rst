@@ -1,5 +1,7 @@
 .. _training:
 
+:orphan:
+
 Training
 ########
 .. highlight:: ectosh

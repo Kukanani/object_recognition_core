@@ -1,5 +1,7 @@
 .. _ork_developer:
 
+:orphan:
+
 object_recognition_core for developers
 ######################################
 

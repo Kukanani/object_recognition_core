@@ -1,5 +1,7 @@
 .. _configuration:
 
+:orphan:
+
 Configuration File
 ##################
 
