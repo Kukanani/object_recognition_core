@@ -4,8 +4,6 @@ Detection
 #########
 .. highlight:: ectosh
 
-.. contents::
-
 Using the different trained objects, we can now detect them.
 
 Use

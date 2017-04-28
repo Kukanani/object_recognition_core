@@ -285,6 +285,36 @@ plane (or "table").
     :alt: Successful detection of a soda can, as seen in RViz.
     :align: center
 
+
+================================================================================
+Troubleshooting
+================================================================================
+
+**Problem:** (ROS only) ``tabletop`` complains about the 3D inputs or seems to
+wait for a ROS topic forever.
+
+**Solution:** It may be because ``tabletop`` is not listening to the topics that
+the 3D camera is publishing. Just open the ``.ork`` configuration file you
+supplied in the detection command (if you are following the tutorial, then
+it is ``ork_tutorials/conf/gettingstarted.ork``). Check if the camera data
+topics are the same as what are published by the 3D camera (you can check with
+``rostopic list`` or similar commands). If the configuration file does not match
+the published camera topics, you will need to modify them in the configuration
+file so they match.
+
+**Problem:** When running the tabletop detection command, you get the following
+error message::
+
+    /usr/include/boost/smart_ptr/shared_ptr.hpp:412:
+    boost::shared_ptr<T>::reference boost::shared_ptr<T>::operator*() const
+    [with T = xn::NodeInfo, boost::shared_ptr<T>::reference = xn::NodeInfo&]: Assertion `px != 0' failed
+
+**Solution:** This means that tabletop is receiving no messages from one (or
+several) ROS topics that it subscribes as input. When you run into this
+exception, please verify if those ROS topics is publishing messages as
+expected (try 'rostopic echo <ROS_topic_name>), and then relaunch your
+tabletop pipeline.
+
 ================================================================================
 Where to Go Next
 ================================================================================

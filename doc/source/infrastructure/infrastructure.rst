@@ -5,4 +5,4 @@
 .. _infrastructure::
 
 This document has moved, please see the Reference section at
-:ref:`ORK Home <index>`_.
+:ref:`ORK Home <object_recognition_tutorials>`.

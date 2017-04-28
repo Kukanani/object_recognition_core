@@ -2,6 +2,6 @@
 
 :orphan:
 
-.. _object_recognition_core_db
+.. _object_recognition_core_db:
 
-This document has moved, please see :ref:`Databases <databases>`_.
+This document has moved, please see :ref:`Databases <databases>`.

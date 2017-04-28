@@ -172,7 +172,8 @@ The first step is to create a catkin workspace:
 
     Install some tools for visualization and editing the camera's configuration.
     These tools are necessary if you want to do a detection procedure like the
-    one listed in the :ref:`Getting Started Guide <getting_started>`.
+    one listed in the :ref:`Getting Started Guide <getting_started>` or the
+    Tutorials.
 
     .. code-block:: sh
 

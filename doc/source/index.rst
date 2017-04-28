@@ -80,7 +80,6 @@ Reference Documentation
   -- Details on ``ORK``'s integration with ROS
 - :ref:`Reconstruction Tool <orkreconstruction:reconstruction>`
   -- An ``ORK`` tool for reconstructing 3D models from several images
-- :ref:`Quick Guide <quickguide>`--An outdated tutorial for ORK
 
 --------------------------------------------------------------------------------
 Developers' Guide
